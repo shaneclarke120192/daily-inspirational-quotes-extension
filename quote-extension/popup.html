@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    /* Hide the footer that displays the quote ID */
+    .footer {
+      display: none !important;
+    }
+
+    body {
+      width: 400px;
+      min-height: 300px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #b0e0e6 0%, #7ec8ff 100%);
+      color: #333;
+      border: 3px solid #2a6b8f;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .quote-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .quote-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a4d6e;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+    .quote-text {
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      font-style: italic;
+      color: #000000;
+      font-weight: 500;
+    }
+    .quote-author {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #000000;
+      font-weight: 500;
+    }
+    .reaction-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+    .reaction-btn {
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .reaction-btn:hover {
+      transform: scale(1.1);
+      background: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .reaction-btn.like-btn.active {
+      background: #4caf50;
+      color: white;
+      box-shadow: 0 0 15px #4caf50;
+    }
+    .reaction-btn.dislike-btn.active {
+      background: #f44336;
+      color: white;
+      box-shadow: 0 0 15px #f44336;
+    }
+    .reaction-btn.like-btn.active:hover {
+      background: #45a049;
+    }
+    .reaction-btn.dislike-btn.active:hover {
+      background: #d32f2f;
+    }
+    .vote-counts {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .vote-count {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 4px 12px;
+      border-radius: 20px;
+      color: #333;
+    }
+    .feedback-section {
+      margin-top: 16px;
+      border-top: 1px solid rgba(26, 77, 110, 0.5);
+      padding-top: 12px;
+    }
+    .feedback-toggle {
+      background: #d4eaf7;
+      border: 1px solid #2a6b8f;
+      color: #000000;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    .feedback-toggle:hover {
+      background: #c0dcee;
+    }
+    .feedback-form {
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .feedback-form.hidden {
+      display: none;
+    }
+    .feedback-form textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: white;
+      font-family: inherit;
+      font-size: 12px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .submit-feedback {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .submit-feedback:hover {
+      background: #45a049;
+    }
+    /* Single class for all feedback messages – dark red */
+    .feedback-status.feedback-message {
+      font-size: 14px;
+      margin-top: 8px;
+      min-height: 20px;
+      text-align: center;
+      font-weight: 700;
+      color: #660000 !important;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+    .error {
+      color: #ff6b6b;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-container">
+    <div class="quote-title">Quote of the Day</div>
+    <div id="quoteDisplay">
+      <div class="loading">Loading quote...</div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
